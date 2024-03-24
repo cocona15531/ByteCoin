@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         
     }
 
-
 }
 
 //MARK: - UIPickerViewDelegate
@@ -44,6 +43,8 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=
+        coinManeger.getCoinPrice(for: coinManeger.currencyArray[row])
         print(coinManeger.currencyArray[row])
     }
 }
