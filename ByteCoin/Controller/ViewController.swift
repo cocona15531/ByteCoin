@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     let coinManeger = CoinManager()
+    let requestURL = "https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=1EF61F6C-32BD-4016-A73A-EABE79BA41B6"
+
 
     @IBOutlet weak var bitcoinLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
 //MARK: - UIPickerViewDelegate
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -43,9 +46,9 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=
-        coinManeger.getCoinPrice(for: coinManeger.currencyArray[row])
         print(coinManeger.currencyArray[row])
+        coinManeger.getCoinPrice(for: coinManeger.currencyArray[row])
+
     }
 }
 
