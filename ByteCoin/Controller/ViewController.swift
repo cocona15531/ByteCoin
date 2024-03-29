@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let coinManeger = CoinManager()
+    var coinManeger = CoinManager()
     let requestURL = "https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=1EF61F6C-32BD-4016-A73A-EABE79BA41B6"
 
 
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 
         currencyPicker.delegate = self
         currencyPicker.dataSource = self
-        
+        coinManeger.delegate = self
     }
 
 }
@@ -50,5 +50,17 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         coinManeger.getCoinPrice(for: coinManeger.currencyArray[row])
 
     }
+}
+
+extension ViewController: CoinManagerDelegate {
+    func didUpdatePrice(price: Double) {
+        <#code#>
+    }
+    
+    func didFailWithError(error: any Error) {
+        <#code#>
+    }
+    
+    
 }
 
