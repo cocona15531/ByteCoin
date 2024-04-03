@@ -54,7 +54,8 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension ViewController: CoinManagerDelegate {
     func didUpdatePrice(price: Double) {
-        <#code#>
+        //UIの更新を行う
+        //bitcoinLabelとcurrencyLabelの更新を行う
     }
     
     func didFailWithError(error: any Error) {

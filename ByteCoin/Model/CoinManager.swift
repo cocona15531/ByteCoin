@@ -43,6 +43,7 @@ struct CoinManager {
                 
                 if let safeData = data {
                     if let bitprice = parseJSON(safeData) {
+                        //デリゲートを使っているViewControllerにデータを渡すことができる
                         delegate?.didUpdatePrice(price: bitprice)
 
                     }
