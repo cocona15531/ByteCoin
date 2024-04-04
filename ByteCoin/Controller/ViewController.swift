@@ -52,6 +52,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+//ここから下はCoinManagerDelegateのextension
 extension ViewController: CoinManagerDelegate {
     func didUpdatePrice(price: Double) {
         //UIの更新を行う
