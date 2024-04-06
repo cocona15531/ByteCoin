@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CoinManagerDelegate {
-    func didUpdatePrice(price: String)
+    func didUpdatePrice(price: String, currency: String)
     func didFailWithError(error: Error)
 }
 
@@ -34,7 +34,7 @@ struct CoinManager {
             //3. Give the session a task
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    print(error)
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
@@ -45,7 +45,7 @@ struct CoinManager {
                     if let bitprice = parseJSON(safeData) {
                         //デリゲートを使っているViewControllerにデータを渡すことができる
                             let formatBitPrice = String(format: "%.2f", bitprice)
-                        delegate?.didUpdatePrice(price: formatBitPrice)
+                        self.delegate?.didUpdatePrice(price: formatBitPrice, currency: currency)
                     }
                 }
             }
