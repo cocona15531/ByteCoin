@@ -42,6 +42,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        currencyLabel.text = coinManeger.currencyArray[row]
         return coinManeger.currencyArray[row]
     }
     
@@ -54,13 +55,16 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 //ここから下はCoinManagerDelegateのextension
 extension ViewController: CoinManagerDelegate {
-    func didUpdatePrice(price: Double) {
+    func didUpdatePrice(price: String) {
         //UIの更新を行う
         //bitcoinLabelとcurrencyLabelの更新を行う
+        DispatchQueue.main.async {
+            self.bitcoinLabel.text = String(price)
+        }
     }
     
     func didFailWithError(error: any Error) {
-        <#code#>
+        
     }
     
     
